@@ -1,9 +1,123 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Calendar</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/svg+xml" href="./assets/img/logo_icon.svg" />
   </head>
-  <body></body>
+  <body>
+    <div class="intro">
+      <span class="logo"
+        ><img src="./assets/img/logo_vertical.svg" alt=""
+      /></span>
+    </div>
+
+    <div class="container">
+      <div class="box-main">
+        <header>
+          <div class="j-center">
+            <div class="head-wrapper">
+              <img src="./assets/img/logo_icon.svg" alt="" />
+              <h1>Calendar</h1>
+            </div>
+          </div>
+          <nav>
+            <div class="button-wrapper">
+              <button id="tab1-btn" class="tab-btn active">
+                Проміжок Часу
+              </button>
+              <button id="tab2-btn" class="tab-btn">Різні Свята</button>
+              <div class="bg"></div>
+            </div>
+          </nav>
+        </header>
+
+        <main>
+          <section id="tab1" class="tab active">
+            <h2 class="h-margin">Обчислення проміжку часу</h2>
+            <div class="date-inputs">
+              <label>
+                <span class="input-text">Початкова дата:</span>
+                <input type="date" id="start-date" />
+              </label>
+              <label>
+                <span class="input-text">Кінцева дата:</span>
+                <input type="date" id="end-date" disabled />
+              </label>
+            </div>
+            <div class="presets">
+              <button data-preset="7">Тиждень (7 днів)</button>
+              <button data-preset="30">Місяць (30 днів)</button>
+            </div>
+            <div class="results-options">
+              <select id="result-type">
+                <option value="days">Порахувати кількість днів</option>
+                <option value="hours">Порахувати кількість годин</option>
+                <option value="minutes">Порахувати кількість хвилин</option>
+                <option value="seconds">Порахувати кількість секунд</option>
+              </select>
+            </div>
+            <div class="result-error"></div>
+            <button id="calculate-btn">Обчислити</button>
+            <div id="results">
+              <h3 class="t-margin">Результати</h3>
+              <table id="history-table">
+                <thead>
+                  <tr>
+                    <th>Початкова дата</th>
+                    <th>Кінцева дата</th>
+                    <th>Результат</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </section>
+
+          <section id="tab2" class="tab">
+            <h2 class="h-margin">Свята</h2>
+            <div class="holiday-inputs">
+              <label>
+                <span class="input-text">Вибір країни:</span>
+                <select id="country-select"></select>
+              </label>
+              <label>
+                <span class="input-text">Вибір року:</span>
+                <select id="year-select" disabled></select>
+              </label>
+            </div>
+            <button id="fetch-holidays-btn" disabled>Отримати свята</button>
+            <div id="holidays">
+              <div class="holiday-wrapper">
+                <div class="btn-wrapp t-margin">
+                  <h3>Список свят</h3>
+
+                  <button id="sort-date-btn">
+                    <i class="bx bx-filter"></i>
+                  </button>
+                </div>
+              </div>
+
+              <table id="holidays-table">
+                <thead>
+                  <tr>
+                    <th>Дата</th>
+                    <th>Назва свята</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+    <script src="./js/main.js" type="module"></script>
+  </body>
 </html>
