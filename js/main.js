@@ -1,5 +1,3 @@
-"use strict";
-
 import { TabSwitcher } from "./tabSwitcher.js";
 import { DateCalculator } from "./dateCalculator.js";
 import { HolidaysFetcher } from "./holidaysFetcher.js";
@@ -84,5 +82,18 @@ document.querySelectorAll("button[data-preset]").forEach((button) => {
     });
 
     button.classList.add("active");
+  });
+});
+
+document.querySelectorAll('input[name="days"]').forEach((radio) => {
+  radio.addEventListener("change", (event) => {
+    document.querySelectorAll(".chip").forEach((chip) => {
+      chip.classList.remove("active");
+    });
+
+    const selectedChip = event.target.closest(".chip");
+    if (selectedChip) {
+      selectedChip.classList.add("active");
+    }
   });
 });

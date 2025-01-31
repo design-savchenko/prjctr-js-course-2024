@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -29,10 +29,8 @@
           </div>
           <nav>
             <div class="button-wrapper">
-              <button id="tab1-btn" class="tab-btn active">
-                Проміжок Часу
-              </button>
-              <button id="tab2-btn" class="tab-btn">Різні Свята</button>
+              <button id="tab1-btn" class="tab-btn active">Time Span</button>
+              <button id="tab2-btn" class="tab-btn">Holidays</button>
               <div class="bg"></div>
             </div>
           </nav>
@@ -44,17 +42,40 @@
             <div class="date-inputs">
               <label>
                 <span class="input-text">Початкова дата:</span>
-                <input type="date" id="start-date" />
+                <input
+                  type="date"
+                  id="start-date"
+                  placeholder="Оберіть початкову дату"
+                />
               </label>
               <label>
                 <span class="input-text">Кінцева дата:</span>
-                <input type="date" id="end-date" disabled />
+                <input
+                  type="date"
+                  id="end-date"
+                  placeholder="Оберіть кінцеву дату"
+                  disabled
+                />
               </label>
             </div>
             <div class="presets">
               <button data-preset="7">Тиждень (7 днів)</button>
               <button data-preset="30">Місяць (30 днів)</button>
             </div>
+
+            <div class="chips-container">
+              <label class="chip">
+                <input type="radio" name="days" value="all" /> Всі дні
+              </label>
+              <label class="chip">
+                <input type="radio" name="days" value="weekdays" /> Тільки будні
+              </label>
+              <label class="chip">
+                <input type="radio" name="days" value="weekends" /> Тільки
+                вихідні
+              </label>
+            </div>
+
             <div class="results-options">
               <select id="result-type">
                 <option value="days">Порахувати кількість днів</option>
@@ -63,10 +84,17 @@
                 <option value="seconds">Порахувати кількість секунд</option>
               </select>
             </div>
+
             <div class="result-error"></div>
             <button id="calculate-btn">Обчислити</button>
             <div id="results">
-              <h3 class="t-margin">Результати</h3>
+              <div class="result-flex">
+                <h3 class="t-margin">Результати</h3>
+                <button class="clear-btn" id="clearStorageBtn">
+                  Clear <i class="bx bx-history"></i>
+                </button>
+              </div>
+
               <table id="history-table">
                 <thead>
                   <tr>
@@ -95,11 +123,10 @@
             <button id="fetch-holidays-btn" disabled>Отримати свята</button>
             <div id="holidays">
               <div class="holiday-wrapper">
-                <div class="btn-wrapp t-margin">
+                <div class="result-flex">
                   <h3>Список свят</h3>
-
-                  <button id="sort-date-btn">
-                    <i class="bx bx-filter"></i>
+                  <button class="clear-btn" id="sort-date-btn">
+                    Filter <i class="bx bx-filter"></i>
                   </button>
                 </div>
               </div>

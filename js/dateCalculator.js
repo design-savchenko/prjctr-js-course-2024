@@ -21,6 +21,22 @@ export class DateCalculator {
         this.daysFilter = event.target.value;
       });
     });
+
+    const clearStorageBtn = document.getElementById("clearStorageBtn");
+    clearStorageBtn.addEventListener("click", () => this.clearHistory());
+  }
+
+  clearHistory() {
+    this.historyTable.classList.add("history-table-animate");
+
+    setTimeout(() => {
+      localStorage.removeItem("dateHistory");
+      this.history = [];
+      this.updateHistoryTable();
+
+      this.historyTable.classList.remove("history-table-animate");
+      this.historyTable.classList.add("fadeIn");
+    }, 400);
   }
 
   setMinEndDate() {

@@ -11,7 +11,6 @@ body {
   width: 100vw;
   height: 100vh;
   display: flex;
-  align-items: flex-start;
   justify-content: center;
   background-color: #f9f9f9;
 }
@@ -23,18 +22,13 @@ h1 {
 }
 
 h2 {
-  font-size: 1rem;
+  font-size: 1.5rem;
   color: #000;
 }
 
 h3 {
-  font-size: 1rem;
+  font-size: 1.25rem;
   color: #ff7777;
-}
-
-.t-margin {
-  margin-top: 24px;
-  margin-bottom: 8px;
 }
 
 .h-margin {
@@ -50,7 +44,7 @@ h3 {
   justify-content: center;
   background-color: #fff;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   transition: 1s;
   gap: 48px;
 }
@@ -90,7 +84,7 @@ main {
 }
 
 .box-main {
-  max-width: 900px;
+  min-width: 500px;
   margin: 0 auto;
   padding: 20px;
   background: white;
@@ -103,7 +97,6 @@ main {
   margin-top: 12px;
   border: 1px solid red;
   border-radius: 120px;
-  /* padding: 0 12px; */
   display: flex;
   align-items: center;
   background-color: rgba(255, 0, 0, 0.03);
@@ -142,6 +135,7 @@ header h1 {
   border-radius: 240px;
   padding: 8px;
   background: #f5f5f5;
+  border: 1px solid rgb(190 190 190 / 50%);
 }
 
 button {
@@ -154,7 +148,7 @@ button {
   border: none;
   font-weight: 500;
   background: none;
-  font-size: 14px;
+  font-size: 16px;
   cursor: pointer;
   font-family: "Montserrat Alternates", serif;
 }
@@ -190,6 +184,7 @@ button {
   border-radius: 120px;
   transition: left 0.3s ease-in-out;
   z-index: 1;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 label {
@@ -210,6 +205,11 @@ select {
   border: 1px solid #ddd;
   transition: all 0.4s ease-in-out;
   appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding-right: 30px;
+  background: url("/assets/img/arr-down.svg") no-repeat right 10px center;
+  background-size: 12px 12px;
 }
 
 .results-options {
@@ -224,22 +224,7 @@ select {
   border: 1px solid #ccc;
   border-radius: 120px;
   background-color: #fff;
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-}
-
-.results-options::after {
-  content: "";
-  position: absolute;
-  right: 14px;
-  top: 50%;
-  transform: translateY(-50%);
-  pointer-events: none;
-  width: 16px;
-  height: 10px;
-  background-image: url("/assets/img/arr-down.svg");
-  background-size: cover;
+  cursor: pointer;
 }
 
 .holiday-inputs {
@@ -249,33 +234,6 @@ select {
 
 .holiday-inputs label {
   font-size: 16px;
-}
-
-#country-select,
-#year-select {
-  width: 100%;
-  padding: 10px 12px;
-  font-size: 14px;
-  border: 1px solid #ccc;
-  border-radius: 120px;
-  background-color: #fff;
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-}
-
-#country-select::after,
-#year-select::after {
-  content: "";
-  position: absolute;
-  right: 14px;
-  top: 50%;
-  transform: translateY(-50%);
-  pointer-events: none;
-  width: 16px;
-  height: 10px;
-  background-image: url("/assets/img/arr-down.svg");
-  background-size: cover;
 }
 
 input[type="date"] {
@@ -301,9 +259,56 @@ select:focus {
   transition: all 0.4s ease-in-out;
 }
 
+.chips-container {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.chip {
+  background-color: transparent;
+  border: 1px solid #bebebe;
+  padding: 8px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #bebebe;
+  transition: all 0.4s ease-in-out;
+}
+
+.chip:hover {
+  border: 1px solid #000;
+  color: #000;
+  transition: all 0.4s ease-in-out;
+}
+
+.chip.active {
+  background-color: #ff7777;
+  color: white;
+  border: 1px solid #ff7777;
+  transition: all 0.4s ease-in-out;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+input[type="radio"]:checked + label {
+  background-color: #ff7777;
+  color: white;
+  border: 1px solid #007bff;
+}
+
+input[type="radio"]:not(:checked) + label {
+  background-color: transparent;
+  color: #bebebe;
+}
+
 #start-date,
 #end-date {
   width: 100%;
+  cursor: pointer;
 }
 
 button[data-preset].active {
@@ -314,7 +319,6 @@ button[data-preset].active {
 }
 
 .btn-wrapp {
-  /* height: 40px; */
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -322,7 +326,6 @@ button[data-preset].active {
 
 table {
   width: 100%;
-  max-width: 415px;
   border-collapse: collapse;
 }
 
@@ -402,13 +405,14 @@ th {
 }
 
 .presets button {
-  border: 1px solid #ff7777;
+  border: 1px solid #000;
   color: #000;
   border-radius: 120px;
   transition: all 0.4s ease-in-out;
 }
 
 .presets button:hover {
+  border: 1px solid #ff7777;
   background-color: #ff7777;
   color: white;
   transition: all 0.4s ease-in-out;
@@ -418,29 +422,73 @@ th {
   display: flex;
 }
 
-#sort-date-btn {
-  padding: unset;
-  width: 20px;
-  background-color: transparent;
-  border: none;
-  color: #a4a4a4;
+.result-wrappers {
+  display: none;
+}
+
+.date-input {
+  width: 100%;
+  cursor: pointer;
+}
+
+.history-table-animate {
+  animation: fadeOut 0.4s ease forwards;
+}
+
+.result-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 24px 0 12px 0;
+}
+
+.clear-btn {
+  padding: 4px 10px;
+  display: flex;
+  gap: 8px;
+  border: 1px solid #bebebe;
+  color: #bebebe;
+  border-radius: 120px;
+  font-size: 14px;
+  cursor: pointer;
   transition: all 0.4s ease-in-out;
 }
 
-#sort-date-btn:hover {
+.clear-btn i {
+  font-size: 16px;
+}
+
+.clear-btn:hover {
+  border: 1px solid #000;
   color: #000;
   transition: all 0.4s ease-in-out;
 }
 
-#sort-date-btn i {
-  font-size: 1.5rem;
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 
-#sort-date-btn i {
-  font-size: 1.5rem;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 420px) {
+  body {
+    justify-content: unset;
+    align-items: flex-start;
+    background-color: #fff;
+  }
+
   .container {
     padding: unset;
   }
@@ -450,21 +498,58 @@ th {
     margin: 0 auto;
     padding: 20px;
     background: white;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: unset;
     border-radius: unset;
     height: fit-content;
   }
 
   .tab-btn {
-    width: 160px;
+    width: 140px;
     z-index: 2;
   }
 
-  #sort-date-btn {
+  .intro .logo img {
+    width: 160px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  body {
+    justify-content: unset;
+    align-items: flex-start;
+    background-color: #fff;
+  }
+
+  .container {
     padding: unset;
+  }
+
+  .box-main {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    background: white;
+    box-shadow: unset;
+    border-radius: unset;
+    height: fit-content;
+  }
+
+  .tab-btn {
+    width: 190px;
+    z-index: 2;
   }
 
   .presets {
     gap: 12px;
+  }
+
+  table {
+    width: 100%;
+    max-width: unset;
+    border-collapse: collapse;
+  }
+
+  .intro .logo img {
+    width: 180px;
   }
 }
