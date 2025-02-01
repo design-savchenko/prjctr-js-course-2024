@@ -93,7 +93,8 @@ main {
   height: fit-content;
 }
 
-.error-message {
+.error-message,
+.holidays-error-message {
   margin-top: 12px;
   border: 1px solid red;
   border-radius: 120px;
@@ -106,7 +107,8 @@ main {
   padding: 12px 0;
 }
 
-.error-message i {
+.error-message i,
+.holidays-error-message i {
   padding-left: 12px;
 }
 
@@ -261,6 +263,7 @@ select:focus {
 
 .chips-container {
   display: flex;
+  align-items: center;
   gap: 10px;
   flex-wrap: wrap;
   margin-bottom: 12px;
@@ -272,7 +275,7 @@ select:focus {
   padding: 8px 12px;
   border-radius: 20px;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 13px;
   color: #bebebe;
   transition: all 0.4s ease-in-out;
 }
@@ -341,6 +344,10 @@ td {
   font-weight: 400;
 }
 
+td:nth-last-child(1) {
+  width: 300px;
+}
+
 th {
   font-weight: 500;
   background-color: #f2f2f2;
@@ -405,8 +412,8 @@ th {
 }
 
 .presets button {
-  border: 1px solid #000;
-  color: #000;
+  border: 1px solid #737373;
+  color: #737373;
   border-radius: 120px;
   transition: all 0.4s ease-in-out;
 }
@@ -464,6 +471,46 @@ th {
   transition: all 0.4s ease-in-out;
 }
 
+.tab {
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+  animation: fadeOut 0.4s ease-in-out forwards;
+}
+
+.tab.active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
+  animation: fadeIn 0.4s ease-in-out forwards;
+}
+
+.reset-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #000;
+  border: 1px solid #000;
+  padding: 4px 12px !important;
+  border-radius: 20px;
+  cursor: pointer;
+  height: 34px;
+  font-size: 12px;
+  color: #fff;
+  transition: all 0.4s ease-in-out;
+}
+
+.reset-btn i {
+  font-size: 16px;
+}
+
+.reset-btn:hover {
+  background-color: transparent;
+  border: 1px solid #000;
+  color: #000;
+  transition: all 0.4s ease-in-out;
+}
+
 @keyframes fadeOut {
   from {
     opacity: 1;
@@ -510,6 +557,10 @@ th {
 
   .intro .logo img {
     width: 160px;
+  }
+
+  td:nth-last-child(1) {
+    width: 80%;
   }
 }
 

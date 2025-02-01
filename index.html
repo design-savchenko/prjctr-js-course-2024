@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Calendar</title>
+    <title>Калькулятор | Свят</title>
     <link rel="stylesheet" href="./css/style.css" />
     <link
       href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
@@ -29,8 +29,10 @@
           </div>
           <nav>
             <div class="button-wrapper">
-              <button id="tab1-btn" class="tab-btn active">Time Span</button>
-              <button id="tab2-btn" class="tab-btn">Holidays</button>
+              <button id="tab1-btn" class="tab-btn active">
+                Проміжок Часу
+              </button>
+              <button id="tab2-btn" class="tab-btn">Різні Свята</button>
               <div class="bg"></div>
             </div>
           </nav>
@@ -74,6 +76,9 @@
                 <input type="radio" name="days" value="weekends" /> Тільки
                 вихідні
               </label>
+              <button class="reset-btn" id="resetBtn">
+                Скинути <i class="bx bx-minus-circle"></i>
+              </button>
             </div>
 
             <div class="results-options">
@@ -120,7 +125,9 @@
                 <select id="year-select" disabled></select>
               </label>
             </div>
-            <button id="fetch-holidays-btn" disabled>Отримати свята</button>
+
+            <div class="result-error-holidays"></div>
+            <button id="fetch-holidays-btn">Отримати свята</button>
             <div id="holidays">
               <div class="holiday-wrapper">
                 <div class="result-flex">
@@ -145,6 +152,6 @@
         </main>
       </div>
     </div>
-    <script src="./js/main.js" type="module"></script>
+    <script src="/main.js" type="module"></script>
   </body>
 </html>
