@@ -1,0 +1,606 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat Alternates", serif;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  background-color: #f9f9f9;
+}
+
+h1 {
+  line-height: 30px;
+  font-size: 2rem;
+  color: #3e3e3e;
+}
+
+h2 {
+  font-size: 1.5rem;
+  color: #000;
+}
+
+h3 {
+  font-size: 1.25rem;
+  color: #ff7777;
+}
+
+.h-margin {
+  margin: 24px 0;
+  padding: auto;
+}
+
+.intro {
+  position: fixed;
+  z-index: 100000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  width: 100%;
+  height: 100%;
+  transition: 1s;
+  gap: 48px;
+}
+
+.logo {
+  position: relative;
+  display: inline-block;
+  align-items: center;
+  gap: 48px;
+  bottom: -20px;
+  opacity: 0;
+  font-size: 150px;
+}
+
+.logo.active {
+  bottom: 0;
+  opacity: 1;
+  transition: ease-in-out 0.5s;
+}
+
+.logo.fade {
+  bottom: 150px;
+  opacity: 0;
+  transition: ease-in-out 0.5s;
+}
+
+.intro .logo img {
+  width: 200px;
+}
+
+main {
+  width: 100%;
+}
+
+.container {
+  padding: 40px 0;
+}
+
+.box-main {
+  min-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  background: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 24px;
+  height: fit-content;
+}
+
+.error-message,
+.holidays-error-message {
+  margin-top: 12px;
+  border: 1px solid red;
+  border-radius: 120px;
+  display: flex;
+  align-items: center;
+  background-color: rgba(255, 0, 0, 0.03);
+  gap: 8px;
+  color: red;
+  font-size: 0.75rem;
+  padding: 12px 0;
+}
+
+.error-message i,
+.holidays-error-message i {
+  padding-left: 12px;
+}
+
+.head-wrapper {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  margin: 12px 0 36px 0;
+}
+
+.head-wrapper img {
+  width: 35px;
+}
+
+header h1 {
+  text-align: left;
+}
+
+.button-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  width: 100%;
+  border-radius: 240px;
+  padding: 8px;
+  background: #f5f5f5;
+  border: 1px solid rgb(190 190 190 / 50%);
+}
+
+button {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  position: relative;
+  padding: 10px 0;
+  border: none;
+  font-weight: 500;
+  background: none;
+  font-size: 16px;
+  cursor: pointer;
+  font-family: "Montserrat Alternates", serif;
+}
+
+.tab-btn {
+  width: 200px;
+  z-index: 2;
+}
+
+.tab-btn.active {
+  color: white;
+}
+
+.tab {
+  display: none;
+}
+
+.tab.active {
+  display: block;
+}
+
+.holiday-wrapper {
+  align-items: center;
+}
+
+.bg {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: calc(50% - 10px);
+  height: calc(100% - 10px);
+  background: #ff7777;
+  border-radius: 120px;
+  transition: left 0.3s ease-in-out;
+  z-index: 1;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+label {
+  display: block;
+  margin: 10px 0;
+}
+
+.lb-input {
+  display: flex;
+  gap: 24px;
+}
+
+select {
+  padding: 8px 12px;
+  margin: 5px 0;
+  width: 100%;
+  border-radius: 120px;
+  border: 1px solid #ddd;
+  transition: all 0.4s ease-in-out;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding-right: 30px;
+  background: url("/assets/img/arr-down.svg") no-repeat right 10px center;
+  background-size: 12px 12px;
+}
+
+.results-options {
+  position: relative;
+  width: 100%;
+}
+
+#result-type {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 120px;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.holiday-inputs {
+  display: flex;
+  flex-direction: column;
+}
+
+.holiday-inputs label {
+  font-size: 16px;
+}
+
+input[type="date"] {
+  padding: 8px 12px;
+  margin: 5px 0;
+  width: 100%;
+  border-radius: 120px;
+  border: 1px solid #a4a4a4;
+  transition: all 0.4s ease-in-out;
+}
+
+input[type="date"]:focus {
+  border-color: #ff7777;
+  outline: none;
+  box-shadow: 0 0 10px rgba(183, 183, 183, 0.3);
+  transition: all 0.4s ease-in-out;
+}
+
+select:focus {
+  border-color: #ff7777;
+  outline: none;
+  box-shadow: 0 0 10px rgba(183, 183, 183, 0.3);
+  transition: all 0.4s ease-in-out;
+}
+
+.chips-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.chip {
+  background-color: transparent;
+  border: 1px solid #bebebe;
+  padding: 8px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 13px;
+  color: #bebebe;
+  transition: all 0.4s ease-in-out;
+}
+
+.chip:hover {
+  border: 1px solid #000;
+  color: #000;
+  transition: all 0.4s ease-in-out;
+}
+
+.chip.active {
+  background-color: #ff7777;
+  color: white;
+  border: 1px solid #ff7777;
+  transition: all 0.4s ease-in-out;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+input[type="radio"]:checked + label {
+  background-color: #ff7777;
+  color: white;
+  border: 1px solid #007bff;
+}
+
+input[type="radio"]:not(:checked) + label {
+  background-color: transparent;
+  color: #bebebe;
+}
+
+#start-date,
+#end-date {
+  width: 100%;
+  cursor: pointer;
+}
+
+button[data-preset].active {
+  background-color: #ff7777;
+  color: #fff;
+  border: 1px solid #ff5555;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-wrapp {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  font-size: 0.75rem;
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+td {
+  font-weight: 400;
+}
+
+/* td:nth-last-child(1) {
+  width: 300px;
+} */
+
+th {
+  font-weight: 500;
+  background-color: #f2f2f2;
+}
+
+.input-text {
+  font-weight: 600;
+  color: #a4a4a4;
+}
+
+.presets {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.presets button {
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+.btn-text {
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+#calculate-btn {
+  margin-top: 12px;
+  width: 100%;
+  background-color: #000;
+  color: #fff;
+  border-radius: 120px;
+  transition: all 0.4s ease-in-out;
+}
+
+#fetch-holidays-btn {
+  margin-top: 12px;
+  width: 100%;
+  background-color: #ff7777;
+  color: #fff;
+  border-radius: 120px;
+  transition: all 0.4s ease-in-out;
+}
+
+#fetch-holidays-btn:hover {
+  background-color: #000;
+  transition: all 0.4s ease-in-out;
+}
+
+#calculate-btn:hover {
+  background-color: #ff7777;
+  transition: all 0.4s ease-in-out;
+}
+
+#fetch-holidays-btn {
+  width: 100%;
+}
+
+.options {
+  display: flex;
+}
+
+.presets button {
+  border: 1px solid #737373;
+  color: #737373;
+  border-radius: 120px;
+  transition: all 0.4s ease-in-out;
+}
+
+.presets button:hover {
+  border: 1px solid #ff7777;
+  background-color: #ff7777;
+  color: white;
+  transition: all 0.4s ease-in-out;
+}
+
+.j-center {
+  display: flex;
+}
+
+.result-wrappers {
+  display: none;
+}
+
+.date-input {
+  width: 100%;
+  cursor: pointer;
+}
+
+.history-table-animate {
+  animation: fadeOut 0.4s ease forwards;
+}
+
+.result-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 24px 0 12px 0;
+}
+
+.clear-btn {
+  padding: 4px 10px;
+  display: flex;
+  gap: 8px;
+  border: 1px solid #bebebe;
+  color: #bebebe;
+  border-radius: 120px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.4s ease-in-out;
+}
+
+.clear-btn i {
+  font-size: 16px;
+}
+
+.clear-btn:hover {
+  border: 1px solid #000;
+  color: #000;
+  transition: all 0.4s ease-in-out;
+}
+
+.tab {
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+  animation: fadeOut 0.4s ease-in-out forwards;
+}
+
+.tab.active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
+  animation: fadeIn 0.4s ease-in-out forwards;
+}
+
+.reset-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #000;
+  border: 1px solid #000;
+  padding: 4px 12px !important;
+  border-radius: 20px;
+  cursor: pointer;
+  height: 34px;
+  font-size: 12px;
+  color: #fff;
+  transition: all 0.4s ease-in-out;
+}
+
+.reset-btn i {
+  font-size: 16px;
+}
+
+.reset-btn:hover {
+  background-color: transparent;
+  border: 1px solid #000;
+  color: #000;
+  transition: all 0.4s ease-in-out;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  body {
+    justify-content: unset;
+    align-items: flex-start;
+    background-color: #fff;
+  }
+
+  .container {
+    padding: unset;
+  }
+
+  .box-main {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    background: white;
+    box-shadow: unset;
+    border-radius: unset;
+    height: fit-content;
+  }
+
+  .tab-btn {
+    width: 140px;
+    z-index: 2;
+  }
+
+  .intro .logo img {
+    width: 160px;
+  }
+
+  td:nth-last-child(1) {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  body {
+    justify-content: unset;
+    align-items: flex-start;
+    background-color: #fff;
+  }
+
+  .container {
+    padding: unset;
+  }
+
+  .box-main {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    background: white;
+    box-shadow: unset;
+    border-radius: unset;
+    height: fit-content;
+  }
+
+  .tab-btn {
+    width: 190px;
+    z-index: 2;
+  }
+
+  .presets {
+    gap: 12px;
+  }
+
+  table {
+    width: 100%;
+    max-width: unset;
+    border-collapse: collapse;
+  }
+
+  .intro .logo img {
+    width: 180px;
+  }
+}
