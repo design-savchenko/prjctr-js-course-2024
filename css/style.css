@@ -344,9 +344,9 @@ td {
   font-weight: 400;
 }
 
-td:nth-last-child(1) {
+/* td:nth-last-child(1) {
   width: 300px;
-}
+} */
 
 th {
   font-weight: 500;
